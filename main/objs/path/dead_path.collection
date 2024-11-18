@@ -1,0 +1,27 @@
+name: "dead_path"
+instances {
+  id: "dead_path_cell"
+  prototype: "/main/objs/path/dead_path_cell.go"
+  children: "path_points"
+}
+instances {
+  id: "path_point"
+  prototype: "/main/objs/path_point.go"
+  position {
+    y: 100.0
+  }
+}
+instances {
+  id: "path_point1"
+  prototype: "/main/objs/path_point.go"
+}
+scale_along_z: 0
+embedded_instances {
+  id: "path_points"
+  children: "path_point"
+  children: "path_point1"
+  data: ""
+  position {
+    z: 0.1
+  }
+}

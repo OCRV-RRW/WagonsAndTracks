@@ -1,0 +1,30 @@
+name: "curve_path"
+instances {
+  id: "curve_path"
+  prototype: "/main/objs/path/curve_path.go"
+  children: "path_points"
+}
+instances {
+  id: "path_point"
+  prototype: "/main/objs/path_point.go"
+  position {
+    y: -100.0
+  }
+}
+instances {
+  id: "path_point1"
+  prototype: "/main/objs/path_point.go"
+  position {
+    x: 100.0
+  }
+}
+scale_along_z: 0
+embedded_instances {
+  id: "path_points"
+  children: "path_point"
+  children: "path_point1"
+  data: ""
+  position {
+    z: 0.1
+  }
+}

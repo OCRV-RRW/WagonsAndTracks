@@ -1,0 +1,10 @@
+images {
+  image: "/resources/images/blue_wagon.png"
+}
+images {
+  image: "/resources/images/green_wagon.png"
+}
+images {
+  image: "/resources/images/red_wagon.png"
+}
+extrude_borders: 2

@@ -1,12 +1,13 @@
 [bootstrap]
 main_collection = /main/main.collectionc
+render = /orthographic/render/orthographic.renderc
 
 [script]
 shared_state = 1
 
 [display]
-width = 430
-height = 932
+width = 1200
+height = 2000
 high_dpi = 1
 
 [android]
@@ -17,4 +18,10 @@ scale_mode = stretch
 
 [project]
 title = WagonsAndTracks
+dependencies#0 = https://github.com/britzl/defold-orthographic/archive/master.zip
+
+[render]
+clear_color_red = 0.74
+clear_color_green = 0.762
+clear_color_blue = 0.78
 

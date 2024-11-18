@@ -1,0 +1,59 @@
+Wagon = require("main.classes.wagon")
+
+go.property("color", 0)
+go.property("speed", 100)
+
+function init(self)
+	self.obj = Wagon(self.color)
+	self.no_colision = true
+	pprint("sdsd")
+end
+
+function final(self)
+	self.obj = nil
+end
+
+function update(self, dt)
+	if self.no_colision then
+		local new_pos = go.get_position() + vmath.vector3(0, self.speed, 0) * dt
+		go.set_position(new_pos)
+	else
+		local direction = vmath.normalize(self.obj:get_destination_pos() - go.get_world_position())
+		local new_pos = go.get_position() + direction * self.speed * dt
+		go.set_position(new_pos)
+	end
+end
+
+function fixed_update(self, dt)
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash("trigger_response") then
+		if not message.enter then return end
+		self.no_colision = false
+		msg.post(message.other_id, "on_wagon_collision", {wagon = go.get_id()})
+	end
+
+	if message_id == hash("set_destination_pos") then
+		self.obj:set_destination_pos(message.destination_pos)
+	end
+
+	if message_id == hash('delete_obj') then
+		if message.right then
+			pprint("right")
+		else
+			pprint("bad")
+		end
+		go.delete(go.get_id(), true)
+	end
+
+	if message_id == hash('get_wagon_data') then
+		msg.post(sender, 'check_state', {wagon = self.obj, go_id = go.get_id()})
+	end
+end
+
+function on_input(self, action_id, action)
+end
+
+function on_reload(self)
+end

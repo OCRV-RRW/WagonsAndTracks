@@ -1,0 +1,10 @@
+images {
+  image: "/resources/images/blue_end_point.png"
+}
+images {
+  image: "/resources/images/green_end_point.png"
+}
+images {
+  image: "/resources/images/red_end_point.png"
+}
+extrude_borders: 2

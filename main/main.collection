@@ -1,4 +1,559 @@
 name: "main"
+instances {
+  id: "camera"
+  prototype: "/orthographic/camera.go"
+  position {
+    x: 600.0
+    y: 1000.0
+  }
+  component_properties {
+    id: "script"
+    properties {
+      id: "projection"
+      value: "FIXED_AUTO"
+      type: PROPERTY_TYPE_HASH
+    }
+  }
+}
+instances {
+  id: "empty_path"
+  prototype: "/main/objs/path/empty_path.go"
+  position {
+    x: -500.0
+    y: 900.0
+  }
+}
+instances {
+  id: "empty_path1"
+  prototype: "/main/objs/path/empty_path.go"
+  position {
+    x: -300.0
+    y: 900.0
+  }
+}
+instances {
+  id: "empty_path2"
+  prototype: "/main/objs/path/empty_path.go"
+  position {
+    x: -100.0
+    y: 900.0
+  }
+}
+instances {
+  id: "empty_path3"
+  prototype: "/main/objs/path/empty_path.go"
+  position {
+    x: 100.0
+    y: 900.0
+  }
+}
+instances {
+  id: "empty_path4"
+  prototype: "/main/objs/path/empty_path.go"
+  position {
+    x: 300.0
+    y: 900.0
+  }
+}
+instances {
+  id: "empty_path5"
+  prototype: "/main/objs/path/empty_path.go"
+  position {
+    x: 500.0
+    y: 900.0
+  }
+}
+instances {
+  id: "empty_path6"
+  prototype: "/main/objs/path/empty_path.go"
+  position {
+    x: -500.0
+    y: 500.0
+  }
+}
+instances {
+  id: "empty_path7"
+  prototype: "/main/objs/path/empty_path.go"
+  position {
+    x: -300.0
+    y: 500.0
+  }
+}
+instances {
+  id: "empty_path8"
+  prototype: "/main/objs/path/empty_path.go"
+  position {
+    x: -100.0
+    y: 500.0
+  }
+}
+instances {
+  id: "empty_path9"
+  prototype: "/main/objs/path/empty_path.go"
+  position {
+    x: 100.0
+    y: 500.0
+  }
+}
+instances {
+  id: "empty_path10"
+  prototype: "/main/objs/path/empty_path.go"
+  position {
+    x: 300.0
+    y: 500.0
+  }
+}
+instances {
+  id: "empty_path11"
+  prototype: "/main/objs/path/empty_path.go"
+  position {
+    x: 500.0
+    y: 500.0
+  }
+}
+instances {
+  id: "empty_path12"
+  prototype: "/main/objs/path/empty_path.go"
+  position {
+    x: -500.0
+    y: 300.0
+  }
+}
+instances {
+  id: "empty_path13"
+  prototype: "/main/objs/path/empty_path.go"
+  position {
+    x: -100.0
+    y: 300.0
+  }
+}
+instances {
+  id: "empty_path14"
+  prototype: "/main/objs/path/empty_path.go"
+  position {
+    x: 300.0
+    y: 300.0
+  }
+}
+instances {
+  id: "empty_path15"
+  prototype: "/main/objs/path/empty_path.go"
+  position {
+    x: 500.0
+    y: 300.0
+  }
+}
+instances {
+  id: "empty_path16"
+  prototype: "/main/objs/path/empty_path.go"
+  position {
+    x: -500.0
+    y: 100.0
+  }
+}
+instances {
+  id: "empty_path17"
+  prototype: "/main/objs/path/empty_path.go"
+  position {
+    x: -100.0
+    y: 100.0
+  }
+}
+instances {
+  id: "empty_path18"
+  prototype: "/main/objs/path/empty_path.go"
+  position {
+    x: 300.0
+    y: 100.0
+  }
+}
+instances {
+  id: "empty_path19"
+  prototype: "/main/objs/path/empty_path.go"
+  position {
+    x: 500.0
+    y: 100.0
+  }
+}
+instances {
+  id: "empty_path20"
+  prototype: "/main/objs/path/empty_path.go"
+  position {
+    x: -500.0
+    y: -100.0
+  }
+}
+instances {
+  id: "empty_path21"
+  prototype: "/main/objs/path/empty_path.go"
+  position {
+    x: 300.0
+    y: -100.0
+  }
+}
+instances {
+  id: "empty_path22"
+  prototype: "/main/objs/path/empty_path.go"
+  position {
+    x: 500.0
+    y: -100.0
+  }
+}
+instances {
+  id: "empty_path23"
+  prototype: "/main/objs/path/empty_path.go"
+  position {
+    x: -500.0
+    y: -300.0
+  }
+}
+instances {
+  id: "empty_path24"
+  prototype: "/main/objs/path/empty_path.go"
+  position {
+    x: -100.0
+    y: -300.0
+  }
+}
+instances {
+  id: "empty_path25"
+  prototype: "/main/objs/path/empty_path.go"
+  position {
+    x: 300.0
+    y: -300.0
+  }
+}
+instances {
+  id: "empty_path26"
+  prototype: "/main/objs/path/empty_path.go"
+  position {
+    x: 500.0
+    y: -300.0
+  }
+}
+instances {
+  id: "empty_path27"
+  prototype: "/main/objs/path/empty_path.go"
+  position {
+    x: -500.0
+    y: -500.0
+  }
+}
+instances {
+  id: "empty_path28"
+  prototype: "/main/objs/path/empty_path.go"
+  position {
+    x: -500.0
+    y: -700.0
+  }
+}
+instances {
+  id: "empty_path29"
+  prototype: "/main/objs/path/empty_path.go"
+  position {
+    x: -100.0
+    y: -700.0
+  }
+}
+instances {
+  id: "empty_path30"
+  prototype: "/main/objs/path/empty_path.go"
+  position {
+    x: 300.0
+    y: -700.0
+  }
+}
+instances {
+  id: "empty_path31"
+  prototype: "/main/objs/path/empty_path.go"
+  position {
+    x: 500.0
+    y: -700.0
+  }
+}
+instances {
+  id: "empty_path32"
+  prototype: "/main/objs/path/empty_path.go"
+  position {
+    x: -500.0
+    y: 700.0
+  }
+}
+instances {
+  id: "empty_path33"
+  prototype: "/main/objs/path/empty_path.go"
+  position {
+    x: -300.0
+    y: 700.0
+  }
+}
+instances {
+  id: "empty_path34"
+  prototype: "/main/objs/path/empty_path.go"
+  position {
+    x: -100.0
+    y: 700.0
+  }
+}
+instances {
+  id: "empty_path35"
+  prototype: "/main/objs/path/empty_path.go"
+  position {
+    x: 100.0
+    y: 700.0
+  }
+}
+instances {
+  id: "empty_path36"
+  prototype: "/main/objs/path/empty_path.go"
+  position {
+    x: 300.0
+    y: 700.0
+  }
+}
+instances {
+  id: "empty_path37"
+  prototype: "/main/objs/path/empty_path.go"
+  position {
+    x: 500.0
+    y: 700.0
+  }
+}
+instances {
+  id: "empty_path38"
+  prototype: "/main/objs/path/empty_path.go"
+  position {
+    x: -500.0
+    y: -900.0
+  }
+}
+instances {
+  id: "empty_path39"
+  prototype: "/main/objs/path/empty_path.go"
+  position {
+    x: -300.0
+    y: -900.0
+  }
+}
+instances {
+  id: "empty_path40"
+  prototype: "/main/objs/path/empty_path.go"
+  position {
+    x: -100.0
+    y: -900.0
+  }
+}
+instances {
+  id: "empty_path41"
+  prototype: "/main/objs/path/empty_path.go"
+  position {
+    x: 300.0
+    y: -900.0
+  }
+}
+instances {
+  id: "empty_path42"
+  prototype: "/main/objs/path/empty_path.go"
+  position {
+    x: 500.0
+    y: -900.0
+  }
+}
+instances {
+  id: "red_end_point"
+  prototype: "/main/objs/end_point/red_end_point.go"
+  position {
+    x: -300.0
+    y: 350.0
+    z: 0.1
+  }
+  rotation {
+    z: 0.70710677
+    w: 0.70710677
+  }
+}
+instances {
+  id: "green_end_point"
+  prototype: "/main/objs/end_point/green_end_point.go"
+  position {
+    x: 100.0
+    y: 350.0
+    z: 0.1
+  }
+  rotation {
+    z: 0.70710677
+    w: 0.70710677
+  }
+}
+instances {
+  id: "blue_end_point"
+  prototype: "/main/objs/end_point/blue_end_point.go"
+  position {
+    x: 550.0
+    y: -500.0
+    z: 0.1
+  }
+}
+instances {
+  id: "empty_path43"
+  prototype: "/main/objs/path/empty_path.go"
+  position {
+    x: -300.0
+    y: -700.0
+  }
+}
+collection_instances {
+  id: "line_path"
+  collection: "/main/objs/path/line_path.collection"
+  position {
+    x: 300.0
+    y: 1300.0
+  }
+}
+collection_instances {
+  id: "line_path1"
+  collection: "/main/objs/path/line_path.collection"
+  position {
+    x: 300.0
+    y: 1100.0
+  }
+}
+collection_instances {
+  id: "line_path2"
+  collection: "/main/objs/path/line_path.collection"
+  position {
+    x: 700.0
+    y: 1300.0
+  }
+}
+collection_instances {
+  id: "line_path3"
+  collection: "/main/objs/path/line_path.collection"
+  position {
+    x: 700.0
+    y: 1100.0
+  }
+}
+collection_instances {
+  id: "double_dunamic_path"
+  collection: "/main/objs/path/dynamic_path/double_dunamic_path.collection"
+  position {
+    x: 300.0
+    y: 900.0
+  }
+  rotation {
+    z: 1.0
+    w: 6.123234E-17
+  }
+}
+collection_instances {
+  id: "double_dunamic_path1"
+  collection: "/main/objs/path/dynamic_path/double_dunamic_path.collection"
+  position {
+    x: 700.0
+    y: 900.0
+  }
+}
+collection_instances {
+  id: "line_path4"
+  collection: "/main/objs/path/line_path.collection"
+  position {
+    x: 300.0
+    y: 700.0
+  }
+}
+collection_instances {
+  id: "line_path5"
+  collection: "/main/objs/path/line_path.collection"
+  position {
+    x: 700.0
+    y: 700.0
+  }
+}
+collection_instances {
+  id: "line_path6"
+  collection: "/main/objs/path/line_path.collection"
+  position {
+    x: 500.0
+    y: 500.0
+  }
+  rotation {
+    z: 0.70710677
+    w: 0.70710677
+  }
+}
+collection_instances {
+  id: "line_path7"
+  collection: "/main/objs/path/line_path.collection"
+  position {
+    x: 500.0
+    y: 900.0
+  }
+  rotation {
+    z: 0.70710677
+    w: 0.70710677
+  }
+}
+collection_instances {
+  id: "line_path8"
+  collection: "/main/objs/path/line_path.collection"
+  position {
+    x: 900.0
+    y: 500.0
+  }
+  rotation {
+    z: 0.70710677
+    w: 0.70710677
+  }
+}
+collection_instances {
+  id: "line_path9"
+  collection: "/main/objs/path/line_path.collection"
+  position {
+    x: 1100.0
+    y: 500.0
+  }
+  rotation {
+    z: 0.70710677
+    w: 0.70710677
+  }
+}
+collection_instances {
+  id: "line_path10"
+  collection: "/main/objs/path/line_path.collection"
+  position {
+    x: 700.0
+    y: 300.0
+  }
+}
+collection_instances {
+  id: "start_path"
+  collection: "/main/objs/path/start_path.collection"
+  position {
+    x: 700.0
+    y: 100.0
+  }
+}
+collection_instances {
+  id: "triple_dynamic_path"
+  collection: "/main/objs/path/dynamic_path/triple_dynamic_path.collection"
+  position {
+    x: 700.0
+    y: 500.0
+  }
+}
+collection_instances {
+  id: "curve_path"
+  collection: "/main/objs/path/curve_path.collection"
+  position {
+    x: 300.0
+    y: 500.0
+  }
+  rotation {
+    z: 0.70710677
+    w: 0.70710677
+  }
+}
 scale_along_z: 0
 embedded_instances {
   id: "gui"
@@ -7,4 +562,98 @@ embedded_instances {
   "  component: \"/main/gui/game.gui.gui\"\n"
   "}\n"
   ""
+}
+embedded_instances {
+  id: "spawn_point_1"
+  data: "components {\n"
+  "  id: \"spawner\"\n"
+  "  component: \"/main/spawner.script\"\n"
+  "  properties {\n"
+  "    id: \"spawn_interval\"\n"
+  "    value: \"1.5\"\n"
+  "    type: PROPERTY_TYPE_NUMBER\n"
+  "  }\n"
+  "}\n"
+  "embedded_components {\n"
+  "  id: \"blue_wagon_factory\"\n"
+  "  type: \"factory\"\n"
+  "  data: \"prototype: \\\"/main/objs/wagon/blue_wagon.go\\\"\\n"
+  "\"\n"
+  "}\n"
+  "embedded_components {\n"
+  "  id: \"red_wagon_factory\"\n"
+  "  type: \"factory\"\n"
+  "  data: \"prototype: \\\"/main/objs/wagon/red_wagon.go\\\"\\n"
+  "\"\n"
+  "}\n"
+  "embedded_components {\n"
+  "  id: \"green_wagon_factory\"\n"
+  "  type: \"factory\"\n"
+  "  data: \"prototype: \\\"/main/objs/wagon/green_wagon.go\\\"\\n"
+  "\"\n"
+  "}\n"
+  ""
+  position {
+    x: 700.0
+    y: -150.0
+  }
+}
+embedded_instances {
+  id: "path"
+  children: "blue_end_point"
+  children: "empty_path"
+  children: "empty_path1"
+  children: "empty_path10"
+  children: "empty_path11"
+  children: "empty_path12"
+  children: "empty_path13"
+  children: "empty_path14"
+  children: "empty_path15"
+  children: "empty_path16"
+  children: "empty_path17"
+  children: "empty_path18"
+  children: "empty_path19"
+  children: "empty_path2"
+  children: "empty_path20"
+  children: "empty_path21"
+  children: "empty_path22"
+  children: "empty_path23"
+  children: "empty_path24"
+  children: "empty_path25"
+  children: "empty_path26"
+  children: "empty_path27"
+  children: "empty_path28"
+  children: "empty_path29"
+  children: "empty_path3"
+  children: "empty_path30"
+  children: "empty_path31"
+  children: "empty_path32"
+  children: "empty_path33"
+  children: "empty_path34"
+  children: "empty_path35"
+  children: "empty_path36"
+  children: "empty_path37"
+  children: "empty_path38"
+  children: "empty_path39"
+  children: "empty_path4"
+  children: "empty_path40"
+  children: "empty_path41"
+  children: "empty_path42"
+  children: "empty_path43"
+  children: "empty_path5"
+  children: "empty_path6"
+  children: "empty_path7"
+  children: "empty_path8"
+  children: "empty_path9"
+  children: "green_end_point"
+  children: "red_end_point"
+  data: ""
+  position {
+    x: 600.0
+    y: 1000.0
+    z: 0.1
+  }
+  scale3 {
+    z: 0.1
+  }
 }

@@ -1,0 +1,36 @@
+EndPoint = require("main.classes.end_point")
+
+go.property("color", 0)
+
+local function check_state(self, wagon, wagon_id) 
+	msg.post(wagon_id, 'delete_obj', {right = self.obj:is_valid_wagon(wagon)})
+end
+
+function init(self)
+	self.obj = EndPoint(self.color)
+end
+
+function final(self)
+	self.obj = nil
+end
+
+function update(self, dt)
+end
+
+function fixed_update(self, dt)
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash('trigger_response') then
+		msg.post(message.other_id, 'get_wagon_data')
+	end
+	if message_id == hash('check_state') then
+		check_state(self, message.wagon, message.go_id)
+	end
+end
+
+function on_input(self, action_id, action)
+end
+
+function on_reload(self)
+end

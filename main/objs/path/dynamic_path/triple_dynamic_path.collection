@@ -1,0 +1,54 @@
+name: "triple_dynamic_path"
+instances {
+  id: "triple_dynamic_path"
+  prototype: "/main/objs/path/dynamic_path/triple_dynamic_path.go"
+  children: "path_points"
+  component_properties {
+    id: "dynamic_path1"
+    properties {
+      id: "path_count"
+      value: "3.0"
+      type: PROPERTY_TYPE_NUMBER
+    }
+  }
+}
+instances {
+  id: "path_point"
+  prototype: "/main/objs/path_point.go"
+  position {
+    y: -100.0
+  }
+}
+instances {
+  id: "path_point1"
+  prototype: "/main/objs/path_point.go"
+  position {
+    y: 100.0
+  }
+}
+instances {
+  id: "path_point2"
+  prototype: "/main/objs/path_point.go"
+  position {
+    x: -100.0
+  }
+}
+instances {
+  id: "path_point3"
+  prototype: "/main/objs/path_point.go"
+  position {
+    x: 100.0
+  }
+}
+scale_along_z: 0
+embedded_instances {
+  id: "path_points"
+  children: "path_point"
+  children: "path_point1"
+  children: "path_point2"
+  children: "path_point3"
+  data: ""
+  position {
+    z: 0.1
+  }
+}

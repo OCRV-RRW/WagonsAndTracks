@@ -1,0 +1,31 @@
+images {
+  image: "/resources/images/curve_path_cell.png"
+}
+images {
+  image: "/resources/images/dead_path_cell.png"
+}
+images {
+  image: "/resources/images/double_dynamic_path_direction_cell.png"
+}
+images {
+  image: "/resources/images/double_dynamic_path_forward_cell.png"
+}
+images {
+  image: "/resources/images/empty_cell.png"
+}
+images {
+  image: "/resources/images/line_path_cell.png"
+}
+images {
+  image: "/resources/images/start_path_cell.png"
+}
+images {
+  image: "/resources/images/triple_dynamic_path_direction_cell.png"
+}
+images {
+  image: "/resources/images/triple_dynamic_path_forward_cell.png"
+}
+images {
+  image: "/resources/images/triple_dynamic_path_direction2_cell.png"
+}
+extrude_borders: 2
