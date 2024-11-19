@@ -1,3 +1,6 @@
+local event_bus = require("main.modules.event_bus_module")
+local GAME_STATISTIC = require("main.modules.game_statistic")
+
 Wagon = require("main.classes.wagon")
 
 go.property("color", 0)
@@ -41,8 +44,10 @@ function on_message(self, message_id, message, sender)
 	if message_id == hash('delete_obj') then
 		if message.right then
 			msg.post("/gui", "wagon_is_done")
+			event_bus.EVENT_BUS:invoke(GAME_STATISTIC.EVENTS.on_done_wagon)
 		else
 			pprint("bad")
+			event_bus.EVENT_BUS:invoke(GAME_STATISTIC.EVENTS.on_fail_wagon)
 		end
 		go.delete(go.get_id(), true)
 	end

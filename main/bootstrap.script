@@ -1,19 +1,25 @@
-local GAME_SETTINGS = require('main.game_settings')
+local GAME_STATE = require('main.modules.game_state')
+local GAME_STATISTIC = require("main.modules.game_statistic")
 
 function init(self)
 	msg.post("#levelproxy", "load")
 	msg.post(".", "acquire_input_focus")
+	GAME_STATISTIC.init()
+end
+
+function final(self)
+	GAME_STATISTIC.dispose()
 end
 
 function on_message(self, message_id, message, sender)
 	if message_id == hash("pause_level") then
 		msg.post("#levelproxy", "set_time_step", {factor = 0, mode = 1})
-		GAME_SETTINGS.set_is_paused(true)
+		GAME_STATE.set_is_paused(true)
 	end
 
 	if message_id == hash("resume_level") then
 		msg.post("#levelproxy", "set_time_step", {factor = 1, mode = 1})
-		GAME_SETTINGS.set_is_paused(false)
+		GAME_STATE.set_is_paused(false)
 	end
 
 	if message_id == hash("proxy_loaded") then

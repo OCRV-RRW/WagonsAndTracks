@@ -1,16 +1,20 @@
 local druid = require("druid.druid")
 local timer = require('druid.extended.timer')
-local GAME_SETTINGS = require('main.game_settings')
+local GAME_SETTINGS = require('main.modules.game_settings')
+local GAME_STATE = require('main.modules.game_state')
 
 local function start_timer(self, time)
 	self.timer:set_interval(time, 0)
 end
 
 local function on_pause_button_click()
-	if GAME_SETTINGS.IS_PAUSED then
+	pprint("click")
+	if GAME_STATE.IS_PAUSED then
 		msg.post("bootstrap:/bootstrap", "resume_level")
+		gui.set_enabled(gui.get_node("pause_window"), false)
 	else
 		msg.post("bootstrap:/bootstrap", "pause_level")
+		gui.set_enabled(gui.get_node("pause_window"), true)
 	end
 end
 
@@ -18,37 +22,26 @@ function init(self)
 	self.is_paused = false
 	self.druid = druid.new(self)
 	self.timer = self.druid:new(timer, "time", 0, 0)
-	self.train_counter = self.druid:new_text('train_count', GAME_SETTINGS.DONE_WAGONS)
+	self.train_counter = self.druid:new_text('train_count', 0)
 	self.pause_button = self.druid:new_button('pause', on_pause_button_click)
 
 	self.timer_end_handler = function ()
-		pprint("FailGame")
-		--FailGame
-	end
-
-	self.train_counter_set_text_handler = function ()
-		if self.train_counter.last_value == 0 then
-			pprint("WinGame")
-			--WinGame
-		end
+		pprint("FinishGame")
 	end
 
 	self.update_train_counter = function ()
-		self.train_counter:set_to(vmath.clamp(self.train_counter.last_value - 1, 0, GAME_SETTINGS.DONE_WAGONS))
+		self.train_counter:set_to(self.train_counter.last_value + 1)
 	end
 	
 	self.timer.on_timer_end:subscribe(self.timer_end_handler)
-	self.train_counter.on_set_text:subscribe(self.train_counter_set_text_handler)
 	start_timer(self, GAME_SETTINGS.TIME)
 end
 
 function final(self)
 	self.druid:final()
 	self.timer.on_timer_end:unsubscribe(self.timer_end_handler)
-	self.train_counter.on_set_text:unsubscribe(self.train_counter_set_text_handler)
 	self.timer_end_handler = nil
 	self.update_train_counter = nil 
-	self.train_counter_set_text_handler = nil
 end
 
 function update(self, dt)

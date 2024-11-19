@@ -10,4 +10,7 @@ images {
 images {
   image: "/resources/images/train_count_image.png"
 }
+images {
+  image: "/resources/images/pause_background.png"
+}
 extrude_borders: 2

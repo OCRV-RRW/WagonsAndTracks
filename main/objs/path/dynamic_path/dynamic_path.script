@@ -1,4 +1,5 @@
 local camera_orto = require("orthographic.camera")
+local event_bus = require('main.modules.event_bus_module')
 Dynamic_Path = require("main.classes.dynamic_path")
 
 go.property('path_count', 2)
@@ -47,6 +48,15 @@ end
 
 function init(self)
 	msg.post(".", "acquire_input_focus")
+	self.is_clickable = true
+	self.on_game_pause_handler = function ()
+		self.is_clickable = false
+	end
+
+	self.on_game_resume_handler = function ()
+		self.is_clickable = true
+	end
+
 	local point_id = go.get_id('path_point')
 	local point1_id = go.get_id('path_point1')
 	local point2_id = go.get_id('path_point2')
@@ -63,9 +73,19 @@ function init(self)
 	end
 	self.obj = Dynamic_Path(self.path_count, point_id, point1_id, points)
 	self.enter = false
+
+	event_bus.EVENT_BUS:subscribe("on_game_pause", self.on_game_pause_handler)
+	event_bus.EVENT_BUS:subscribe("on_game_resume", self.on_game_resume_handler)
 end
 
 function final(self)
+	msg.post(".", "release_input_focus")
+	self.is_clickable = false
+	event_bus.EVENT_BUS:unsubscribe("on_game_pause", self.on_game_pause_handler)
+	event_bus.EVENT_BUS:unsubscribe("on_game_resume", self.on_game_resume_handler)
+
+	self.on_game_pause_handler = nil
+	self.on_game_resume_handler = nil
 end
 
 function update(self, dt)
@@ -82,6 +102,7 @@ function on_message(self, message_id, message, sender)
 end
 
 function on_input(self, action_id, action)
+	if not self.is_clickable then return end
 	if action_id == hash("touch") and action.pressed then
 		if pick(self, vmath.vector3(action.x, action.y, 0)) then
 			change_state(self)

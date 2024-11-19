@@ -19,10 +19,12 @@ nodes {
   position {
     x: 600.0
     y: 1900.0
+    z: 0.1
   }
   type: TYPE_BOX
   texture: "gui/top_background"
   id: "top"
+  layer: "l2"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
 }
@@ -95,6 +97,25 @@ nodes {
   parent: "top"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: 600.0
+    y: 1000.0
+  }
+  type: TYPE_BOX
+  texture: "gui/pause_background"
+  id: "pause_window"
+  layer: "l1"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+  enabled: false
+}
+layers {
+  name: "l1"
+}
+layers {
+  name: "l2"
 }
 material: "/builtins/materials/gui.material"
 adjust_reference: ADJUST_REFERENCE_PARENT
