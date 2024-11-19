@@ -1,0 +1,5 @@
+font: "/resources/fonts/Rubik-Light.ttf"
+material: "/builtins/fonts/font.material"
+size: 96
+all_chars: true
+characters: " !\"#$%&\'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~"

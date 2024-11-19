@@ -1,0 +1,100 @@
+script: "/main/game.gui_script"
+fonts {
+  name: "always_on_top"
+  font: "/builtins/fonts/debug/always_on_top.font"
+}
+fonts {
+  name: "default"
+  font: "/builtins/fonts/default.font"
+}
+fonts {
+  name: "rubick_light"
+  font: "/resources/fonts/rubick_light.font"
+}
+textures {
+  name: "gui"
+  texture: "/main/atlases/gui.atlas"
+}
+nodes {
+  position {
+    x: 600.0
+    y: 1900.0
+  }
+  type: TYPE_BOX
+  texture: "gui/top_background"
+  id: "top"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: -518.0
+  }
+  type: TYPE_BOX
+  texture: "gui/time_image"
+  id: "time_image"
+  parent: "top"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: -300.0
+  }
+  size {
+    x: 188.0
+    y: 67.0
+  }
+  color {
+    x: 0.573
+    y: 0.573
+    z: 0.573
+  }
+  type: TYPE_TEXT
+  text: "1:00\n"
+  ""
+  font: "rubick_light"
+  id: "time"
+  parent: "top"
+  inherit_alpha: true
+}
+nodes {
+  type: TYPE_BOX
+  texture: "gui/train_count_image"
+  id: "train_count_image"
+  parent: "top"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: 130.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  color {
+    x: 0.573
+    y: 0.573
+    z: 0.573
+  }
+  type: TYPE_TEXT
+  font: "rubick_light"
+  id: "train_count"
+  parent: "top"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 495.0
+  }
+  type: TYPE_BOX
+  texture: "gui/pause_button"
+  id: "pause"
+  parent: "top"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+material: "/builtins/materials/gui.material"
+adjust_reference: ADJUST_REFERENCE_PARENT

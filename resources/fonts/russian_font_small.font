@@ -1,0 +1,5 @@
+font: "/fonts/Roboto-Medium.ttf"
+material: "/builtins/fonts/font.material"
+size: 100
+all_chars: true
+characters: " !\"#$%&\'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~"

@@ -1,4 +1,4 @@
-name: "main"
+name: "level"
 instances {
   id: "camera"
   prototype: "/orthographic/camera.go"
@@ -559,7 +559,7 @@ embedded_instances {
   id: "gui"
   data: "components {\n"
   "  id: \"game.gui\"\n"
-  "  component: \"/main/gui/game.gui.gui\"\n"
+  "  component: \"/main/main.gui\"\n"
   "}\n"
   ""
 }
@@ -570,7 +570,7 @@ embedded_instances {
   "  component: \"/main/spawner.script\"\n"
   "  properties {\n"
   "    id: \"spawn_interval\"\n"
-  "    value: \"1.5\"\n"
+  "    value: \"2.3\"\n"
   "    type: PROPERTY_TYPE_NUMBER\n"
   "  }\n"
   "}\n"

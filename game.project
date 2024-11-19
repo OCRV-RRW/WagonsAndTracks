@@ -1,5 +1,5 @@
 [bootstrap]
-main_collection = /main/main.collectionc
+main_collection = /main/bootstrap.collectionc
 render = /orthographic/render/orthographic.renderc
 
 [script]
@@ -19,9 +19,5 @@ scale_mode = stretch
 [project]
 title = WagonsAndTracks
 dependencies#0 = https://github.com/britzl/defold-orthographic/archive/master.zip
-
-[render]
-clear_color_red = 0.74
-clear_color_green = 0.762
-clear_color_blue = 0.78
+dependencies#1 = https://github.com/Insality/druid/archive/refs/tags/1.0.zip
 

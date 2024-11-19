@@ -40,7 +40,7 @@ function on_message(self, message_id, message, sender)
 
 	if message_id == hash('delete_obj') then
 		if message.right then
-			pprint("right")
+			msg.post("/gui", "wagon_is_done")
 		else
 			pprint("bad")
 		end

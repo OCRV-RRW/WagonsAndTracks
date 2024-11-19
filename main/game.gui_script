@@ -1,0 +1,67 @@
+local druid = require("druid.druid")
+local timer = require('druid.extended.timer')
+local GAME_SETTINGS = require('main.game_settings')
+
+local function start_timer(self, time)
+	self.timer:set_interval(time, 0)
+end
+
+local function on_pause_button_click()
+	if GAME_SETTINGS.IS_PAUSED then
+		msg.post("bootstrap:/bootstrap", "resume_level")
+	else
+		msg.post("bootstrap:/bootstrap", "pause_level")
+	end
+end
+
+function init(self)
+	self.is_paused = false
+	self.druid = druid.new(self)
+	self.timer = self.druid:new(timer, "time", 0, 0)
+	self.train_counter = self.druid:new_text('train_count', GAME_SETTINGS.DONE_WAGONS)
+	self.pause_button = self.druid:new_button('pause', on_pause_button_click)
+
+	self.timer_end_handler = function ()
+		pprint("FailGame")
+		--FailGame
+	end
+
+	self.train_counter_set_text_handler = function ()
+		if self.train_counter.last_value == 0 then
+			pprint("WinGame")
+			--WinGame
+		end
+	end
+
+	self.update_train_counter = function ()
+		self.train_counter:set_to(vmath.clamp(self.train_counter.last_value - 1, 0, GAME_SETTINGS.DONE_WAGONS))
+	end
+	
+	self.timer.on_timer_end:subscribe(self.timer_end_handler)
+	self.train_counter.on_set_text:subscribe(self.train_counter_set_text_handler)
+	start_timer(self, GAME_SETTINGS.TIME)
+end
+
+function final(self)
+	self.druid:final()
+	self.timer.on_timer_end:unsubscribe(self.timer_end_handler)
+	self.train_counter.on_set_text:unsubscribe(self.train_counter_set_text_handler)
+	self.timer_end_handler = nil
+	self.update_train_counter = nil 
+	self.train_counter_set_text_handler = nil
+end
+
+function update(self, dt)
+	self.druid:update(dt)
+end
+
+function on_message(self, message_id, message, sender)
+	self.druid:on_message(message_id, message, sender)
+	if message_id == hash("wagon_is_done") then
+		self.update_train_counter()
+	end
+end
+
+function on_input(self, action_id, action)
+	self.druid:on_input(action_id, action)
+end

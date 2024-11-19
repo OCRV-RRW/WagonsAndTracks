@@ -1,0 +1,16 @@
+name: "main"
+scale_along_z: 0
+embedded_instances {
+  id: "bootstrap"
+  data: "components {\n"
+  "  id: \"bootstrap\"\n"
+  "  component: \"/main/bootstrap.script\"\n"
+  "}\n"
+  "embedded_components {\n"
+  "  id: \"levelproxy\"\n"
+  "  type: \"collectionproxy\"\n"
+  "  data: \"collection: \\\"/main/level.collection\\\"\\n"
+  "\"\n"
+  "}\n"
+  ""
+}
