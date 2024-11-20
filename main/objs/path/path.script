@@ -6,6 +6,10 @@ local function get_destination_pos(self, collision_object_id)
 	return go.get_world_position(destination_point_id)
 end
 
+local function get_help_pos(self)
+	return go.get_world_position(go.get_id('help_point'))
+end
+
 function init(self)
 	local path_point = go.get_id('path_point')
 	local path_point1 = go.get_id('path_point1')
@@ -36,8 +40,8 @@ end
 
 function on_message(self, message_id, message, sender)
 	if message_id == hash("on_wagon_collision") then
-		pprint('static')
-		msg.post(message.wagon, 'set_destination_pos', {destination_pos = get_destination_pos(self, message.go_id)})
+		msg.post(message.wagon, 'set_destination_pos', {destination_pos = get_destination_pos(self, message.go_id), 
+			help_pos = get_help_pos(self)})
 	end
 end
 

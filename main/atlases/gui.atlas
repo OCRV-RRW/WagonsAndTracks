@@ -13,4 +13,16 @@ images {
 images {
   image: "/resources/images/pause_background.png"
 }
+images {
+  image: "/resources/images/statistic_popup.png"
+}
+images {
+  image: "/resources/images/play_button.png"
+}
+images {
+  image: "/resources/images/next_level_button.png"
+}
+images {
+  image: "/resources/images/restart_button.png"
+}
 extrude_borders: 2

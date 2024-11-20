@@ -1,5 +1,6 @@
 local camera_orto = require("orthographic.camera")
 local event_bus = require('main.modules.event_bus_module')
+local GAME_STATE = require('main.modules.game_state')
 Dynamic_Path = require("main.classes.dynamic_path")
 
 go.property('path_count', 2)
@@ -11,6 +12,10 @@ local function get_destination_pos(self, collision_object_id, wagon)
 		msg.post(wagon, 'delete_obj', {right = false})
 	end
 	return go.get_world_position(destination_point_id)
+end
+
+local function get_help_pos(self)
+	return go.get_world_position(go.get_id('help_point'))
 end
 
 local function pick(self, touch_pos)
@@ -30,16 +35,16 @@ local function change_state(self)
 	local new_state = self.obj:get_state()
 	if self.path_count == 2 then
 		if new_state == 1 then
-			sprite.play_flipbook('#sprite', 'double_dynamic_path_forward_cell')
-		elseif new_state == 2 then
 			sprite.play_flipbook('#sprite', 'double_dynamic_path_direction_cell')
+		elseif new_state == 2 then
+			sprite.play_flipbook('#sprite', 'double_dynamic_path_forward_cell')
 		end
 	end
 	if self.path_count == 3 then
 		if new_state == 1 then
-			sprite.play_flipbook("#sprite", "triple_dynamic_path_forward_cell")
-		elseif new_state == 2 then
 			sprite.play_flipbook("#sprite", "triple_dynamic_path_direction2_cell")
+		elseif new_state == 2 then
+			sprite.play_flipbook("#sprite", "triple_dynamic_path_forward_cell")
 		elseif new_state == 3 then
 			sprite.play_flipbook("#sprite", "triple_dynamic_path_direction_cell")
 		end
@@ -50,6 +55,10 @@ function init(self)
 	msg.post(".", "acquire_input_focus")
 	self.is_clickable = true
 	self.on_game_pause_handler = function ()
+		self.is_clickable = false
+	end
+
+	self.on_game_finish_handler = function ()
 		self.is_clickable = false
 	end
 
@@ -71,21 +80,24 @@ function init(self)
 		msg.post(point3_id, 'set_path')
 		points[3] = point3_id
 	end
-	self.obj = Dynamic_Path(self.path_count, point_id, point1_id, points)
+	self.obj = Dynamic_Path(self.path_count, point_id, point2_id, points)
 	self.enter = false
 
-	event_bus.EVENT_BUS:subscribe("on_game_pause", self.on_game_pause_handler)
-	event_bus.EVENT_BUS:subscribe("on_game_resume", self.on_game_resume_handler)
+	event_bus.EVENT_BUS:subscribe(GAME_STATE.EVENTS.on_game_pause, self.on_game_pause_handler)
+	event_bus.EVENT_BUS:subscribe(GAME_STATE.EVENTS.on_game_resume, self.on_game_resume_handler)
+	event_bus.EVENT_BUS:subscribe(GAME_STATE.EVENTS.on_finish_game, self.on_game_finish_handler)
 end
 
 function final(self)
 	msg.post(".", "release_input_focus")
 	self.is_clickable = false
-	event_bus.EVENT_BUS:unsubscribe("on_game_pause", self.on_game_pause_handler)
-	event_bus.EVENT_BUS:unsubscribe("on_game_resume", self.on_game_resume_handler)
+	event_bus.EVENT_BUS:unsubscribe(GAME_STATE.EVENTS.on_game_pause, self.on_game_pause_handler)
+	event_bus.EVENT_BUS:unsubscribe(GAME_STATE.EVENTS.on_game_resume, self.on_game_resume_handler)
+	event_bus.EVENT_BUS:unsubscribe(GAME_STATE.EVENTS.on_finish_game, self.on_game_finish_handler)
 
 	self.on_game_pause_handler = nil
 	self.on_game_resume_handler = nil
+	self.on_game_finish_handler = nil
 end
 
 function update(self, dt)
@@ -96,8 +108,8 @@ end
 
 function on_message(self, message_id, message, sender)
 	if message_id == hash("on_wagon_collision") then
-		pprint("dynamic")
-		msg.post(message.wagon, 'set_destination_pos', {destination_pos = get_destination_pos(self, message.go_id, message.wagon)})
+		msg.post(message.wagon, 'set_destination_pos', {destination_pos = get_destination_pos(self, message.go_id, message.wagon), 
+			help_pos = get_help_pos(self)})
 	end
 end
 

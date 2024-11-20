@@ -1,5 +1,4 @@
 function init(self)
-	pprint("path_point")
 end
 
 function final(self)

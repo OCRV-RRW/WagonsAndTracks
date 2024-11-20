@@ -2,20 +2,50 @@ local druid = require("druid.druid")
 local timer = require('druid.extended.timer')
 local GAME_SETTINGS = require('main.modules.game_settings')
 local GAME_STATE = require('main.modules.game_state')
+local GAME_STATISTIC = require('main.modules.game_statistic')
 
 local function start_timer(self, time)
 	self.timer:set_interval(time, 0)
 end
 
 local function on_pause_button_click()
-	pprint("click")
 	if GAME_STATE.IS_PAUSED then
+		gui.set_texture(gui.get_node('pause'), 'gui')
+		gui.play_flipbook(gui.get_node('pause'), 'pause_button')
 		msg.post("bootstrap:/bootstrap", "resume_level")
 		gui.set_enabled(gui.get_node("pause_window"), false)
 	else
+		gui.set_texture(gui.get_node('pause'), 'gui')
+		gui.play_flipbook(gui.get_node('pause'), 'play_button')
 		msg.post("bootstrap:/bootstrap", "pause_level")
 		gui.set_enabled(gui.get_node("pause_window"), true)
 	end
+end
+
+local function on_restart_button_click()
+	msg.post("bootstrap:/bootstrap", "restart_level")
+end
+
+local function on_next_level_button_click()
+	msg.post("bootstrap:/bootstrap", "next_level")
+end
+
+local function show_statistic_window(self)
+	gui.set_enabled(gui.get_node('statistic_window'), true)
+	self.total_wagons:set_to(GAME_STATISTIC.TOTAL_WAGONS)
+	self.done_wagons:set_to(GAME_STATISTIC.DONE_WAGONS)
+	self.fail_wagons:set_to(GAME_STATISTIC.FAIL_WAGONS)
+	local on_show_statistic_popup = function ()
+		msg.post("bootstrap:/bootstrap", "finish_level")
+	end
+
+	gui.animate(gui.get_node("statistic_popup"), 
+		gui.PROP_POSITION, 
+		vmath.vector3(0, 0, 0), 
+		gui.EASING_OUTELASTIC, 
+		0.3, 
+		0, 
+		on_show_statistic_popup)
 end
 
 function init(self)
@@ -24,9 +54,16 @@ function init(self)
 	self.timer = self.druid:new(timer, "time", 0, 0)
 	self.train_counter = self.druid:new_text('train_count', 0)
 	self.pause_button = self.druid:new_button('pause', on_pause_button_click)
+	self.statistic_window_background = self.druid:new_blocker('background')
+	self.statistic_window_background:set_enabled(true)
+	self.total_wagons = self.druid:new_text('total_wagons', 0)
+	self.done_wagons = self.druid:new_text('done_wagons', 0)
+	self.fail_wagons = self.druid:new_text('fail_wagons', 0)
+	self.restart_button = self.druid:new_button('restart_button', on_restart_button_click)
+	self.next_level_button = self.druid:new_button('next_button', on_next_level_button_click)
 
 	self.timer_end_handler = function ()
-		pprint("FinishGame")
+		show_statistic_window(self)
 	end
 
 	self.update_train_counter = function ()

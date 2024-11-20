@@ -111,11 +111,345 @@ nodes {
   size_mode: SIZE_MODE_AUTO
   enabled: false
 }
+nodes {
+  position {
+    x: 600.0
+    y: 1000.0
+  }
+  size {
+    x: 1200.0
+    y: 2000.0
+  }
+  type: TYPE_BOX
+  id: "statistic_window"
+  layer: "l3"
+  inherit_alpha: true
+  alpha: 0.0
+  enabled: false
+}
+nodes {
+  size {
+    x: 1200.0
+    y: 2000.0
+  }
+  color {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  type: TYPE_BOX
+  id: "background"
+  parent: "statistic_window"
+  alpha: 0.72
+}
+nodes {
+  position {
+    y: 1500.0
+  }
+  type: TYPE_BOX
+  texture: "gui/statistic_popup"
+  id: "statistic_popup"
+  parent: "statistic_window"
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    y: 370.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  color {
+    x: 0.173
+    y: 0.243
+    z: 0.314
+  }
+  type: TYPE_TEXT
+  text: "\320\230\321\202\320\276\320\263\320\270:"
+  font: "rubick_light"
+  id: "main_text"
+  parent: "statistic_popup"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: -380.0
+    y: 150.0
+  }
+  scale {
+    x: 0.4
+    y: 0.4
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  color {
+    x: 0.173
+    y: 0.243
+    z: 0.314
+  }
+  type: TYPE_TEXT
+  text: "\320\222\321\201\320\265\320\263\320\276 \320\262\320\260\320\263\320\276\320\275\320\276\320\262 \320\276\321\202\320\277\321\200\320\260\320\262\320\273\320\265\320\275\320\276: "
+  font: "rubick_light"
+  id: "total_wagons_text"
+  pivot: PIVOT_W
+  parent: "statistic_popup"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: -380.0
+  }
+  scale {
+    x: 0.4
+    y: 0.4
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  color {
+    x: 0.173
+    y: 0.243
+    z: 0.314
+  }
+  type: TYPE_TEXT
+  text: "\320\237\321\200\320\260\320\262\320\270\320\273\321\214\320\275\320\276 \320\277\321\200\320\270\320\261\321\213\320\262\321\210\320\270\321\205:\n"
+  ""
+  font: "rubick_light"
+  id: "done_wagons_text"
+  pivot: PIVOT_W
+  parent: "statistic_popup"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: -380.0
+    y: -150.0
+  }
+  scale {
+    x: 0.4
+    y: 0.4
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  color {
+    x: 0.173
+    y: 0.243
+    z: 0.314
+  }
+  type: TYPE_TEXT
+  text: "\320\235\320\265\320\277\321\200\320\260\320\262\320\270\320\273\321\214\320\275\320\276 \320\277\321\200\320\270\320\261\321\213\320\262\321\210\320\270\321\205:"
+  font: "rubick_light"
+  id: "fail_wagons_text"
+  pivot: PIVOT_W
+  parent: "statistic_popup"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 120.0
+    y: 150.0
+  }
+  scale {
+    x: 0.4
+    y: 0.4
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  color {
+    x: 0.173
+    y: 0.243
+    z: 0.314
+  }
+  type: TYPE_TEXT
+  text: "0"
+  font: "rubick_light"
+  id: "total_wagons"
+  pivot: PIVOT_W
+  parent: "statistic_popup"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 50.0
+  }
+  scale {
+    x: 0.4
+    y: 0.4
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  color {
+    x: 0.173
+    y: 0.243
+    z: 0.314
+  }
+  type: TYPE_TEXT
+  text: "0"
+  font: "rubick_light"
+  id: "done_wagons"
+  pivot: PIVOT_W
+  parent: "statistic_popup"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 95.0
+    y: -150.0
+  }
+  scale {
+    x: 0.4
+    y: 0.4
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  color {
+    x: 0.173
+    y: 0.243
+    z: 0.314
+  }
+  type: TYPE_TEXT
+  text: "0"
+  font: "rubick_light"
+  id: "fail_wagons"
+  pivot: PIVOT_W
+  parent: "statistic_popup"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: -100.0
+    y: -300.0
+  }
+  size {
+    x: 130.0
+    y: 130.0
+  }
+  type: TYPE_BOX
+  texture: "gui/restart_button"
+  id: "restart_button"
+  parent: "statistic_popup"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 100.0
+    y: -300.0
+  }
+  size {
+    x: 130.0
+    y: 130.0
+  }
+  type: TYPE_BOX
+  texture: "gui/next_level_button"
+  id: "next_button"
+  parent: "statistic_popup"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 600.0
+    y: 1000.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_BOX
+  id: "edges"
+  inherit_alpha: true
+  alpha: 0.0
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: -1200.0
+  }
+  size {
+    x: 1200.0
+    y: 2000.0
+  }
+  color {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  type: TYPE_BOX
+  id: "left_canvas"
+  parent: "edges"
+}
+nodes {
+  position {
+    x: 1200.0
+  }
+  size {
+    x: 1200.0
+    y: 2000.0
+  }
+  color {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  type: TYPE_BOX
+  id: "right_canvas"
+  parent: "edges"
+}
+nodes {
+  position {
+    y: 1500.0
+  }
+  size {
+    x: 1200.0
+    y: 1000.0
+  }
+  color {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  type: TYPE_BOX
+  id: "top_canvas"
+  parent: "edges"
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    y: -1500.0
+  }
+  size {
+    x: 1200.0
+    y: 1000.0
+  }
+  color {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  type: TYPE_BOX
+  id: "bottom_canvas"
+  parent: "edges"
+  size_mode: SIZE_MODE_AUTO
+}
 layers {
   name: "l1"
 }
 layers {
   name: "l2"
+}
+layers {
+  name: "l3"
 }
 material: "/builtins/materials/gui.material"
 adjust_reference: ADJUST_REFERENCE_PARENT

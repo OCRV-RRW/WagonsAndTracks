@@ -8,7 +8,7 @@ components {
   }
   properties {
     id: "speed"
-    value: "160.0"
+    value: "1.0"
     type: PROPERTY_TYPE_NUMBER
   }
 }

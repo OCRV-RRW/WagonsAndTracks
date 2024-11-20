@@ -12,22 +12,30 @@ instances {
   }
 }
 instances {
-  id: "path_point1"
+  id: "path_point2"
   prototype: "/main/objs/path_point.go"
   position {
     y: 100.0
   }
 }
 instances {
-  id: "path_point2"
+  id: "path_point1"
   prototype: "/main/objs/path_point.go"
   position {
     x: -100.0
   }
 }
+instances {
+  id: "help_point"
+  prototype: "/main/objs/path_point.go"
+  position {
+    y: 50.0
+  }
+}
 scale_along_z: 0
 embedded_instances {
   id: "path_points"
+  children: "help_point"
   children: "path_point"
   children: "path_point1"
   children: "path_point2"
