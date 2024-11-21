@@ -54,15 +54,15 @@ end
 function init(self)
 	msg.post(".", "acquire_input_focus")
 	self.is_clickable = true
-	self.on_game_pause_handler = function ()
+	self.on_level_pause_handler = function ()
 		self.is_clickable = false
 	end
 
-	self.on_game_finish_handler = function ()
+	self.on_level_finish_handler = function ()
 		self.is_clickable = false
 	end
 
-	self.on_game_resume_handler = function ()
+	self.on_level_resume_handler = function ()
 		self.is_clickable = true
 	end
 
@@ -83,21 +83,21 @@ function init(self)
 	self.obj = Dynamic_Path(self.path_count, point_id, point2_id, points)
 	self.enter = false
 
-	event_bus.EVENT_BUS:subscribe(GAME_STATE.EVENTS.on_game_pause, self.on_game_pause_handler)
-	event_bus.EVENT_BUS:subscribe(GAME_STATE.EVENTS.on_game_resume, self.on_game_resume_handler)
-	event_bus.EVENT_BUS:subscribe(GAME_STATE.EVENTS.on_finish_game, self.on_game_finish_handler)
+	event_bus.EVENT_BUS:subscribe(GAME_STATE.EVENTS.on_level_pause, self.on_level_pause_handler)
+	event_bus.EVENT_BUS:subscribe(GAME_STATE.EVENTS.on_level_resume, self.on_level_resume_handler)
+	event_bus.EVENT_BUS:subscribe(GAME_STATE.EVENTS.on_finish_level, self.on_level_finish_handler)
 end
 
 function final(self)
 	msg.post(".", "release_input_focus")
 	self.is_clickable = false
-	event_bus.EVENT_BUS:unsubscribe(GAME_STATE.EVENTS.on_game_pause, self.on_game_pause_handler)
-	event_bus.EVENT_BUS:unsubscribe(GAME_STATE.EVENTS.on_game_resume, self.on_game_resume_handler)
-	event_bus.EVENT_BUS:unsubscribe(GAME_STATE.EVENTS.on_finish_game, self.on_game_finish_handler)
+	event_bus.EVENT_BUS:unsubscribe(GAME_STATE.EVENTS.on_level_pause, self.on_level_pause_handler)
+	event_bus.EVENT_BUS:unsubscribe(GAME_STATE.EVENTS.on_level_resume, self.on_level_resume_handler)
+	event_bus.EVENT_BUS:unsubscribe(GAME_STATE.EVENTS.on_finish_level, self.on_level_finish_handler)
 
-	self.on_game_pause_handler = nil
-	self.on_game_resume_handler = nil
-	self.on_game_finish_handler = nil
+	self.on_level_pause_handler = nil
+	self.on_level_resume_handler = nil
+	self.on_level_finish_handler = nil
 end
 
 function update(self, dt)
