@@ -28,7 +28,7 @@ function update(self, dt)
 		local new_pos = go.get_position() + vmath.vector3(0, self.speed * 100, 0) * dt
 		go.set_position(new_pos)
 	else
-		self.bezie_t = vmath.clamp(self.bezie_t + (dt * self.speed), 0, 1)
+		self.bezie_t = self.bezie_t + (dt * self.speed)
 		local new_pos =
 			math.pow(1 - self.bezie_t, 2) * self.bezie_start_point + 
 			2 * self.bezie_t * (1 - self.bezie_t) * self.bezie_middle_point +
