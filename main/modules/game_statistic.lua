@@ -61,12 +61,14 @@ function GAME_STATISTIC.increase_fail_wagons()
 end
 
 function GAME_STATISTIC.on_finish_level()
-    GAME_STATISTIC:send_statistic({
-        total_wagons = GAME_STATISTIC.TOTAL_WAGONS,
-        done_wagons = GAME_STATISTIC.DONE_WAGONS,
-        fail_wagons = GAME_STATISTIC.FAIL_WAGONS,
-        level = GAME_STATISTIC.LEVEL
-    })
+    if not sys.get_engine_info().is_debug then
+        GAME_STATISTIC:send_statistic({
+            total_wagons = GAME_STATISTIC.TOTAL_WAGONS,
+            done_wagons = GAME_STATISTIC.DONE_WAGONS,
+            fail_wagons = GAME_STATISTIC.FAIL_WAGONS,
+            level = GAME_STATISTIC.LEVEL
+        })
+    end
     GAME_STATISTIC.TOTAL_WAGONS = 0
     GAME_STATISTIC.DONE_WAGONS = 0
     GAME_STATISTIC.FAIL_WAGONS = 0
