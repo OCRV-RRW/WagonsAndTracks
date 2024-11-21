@@ -4,7 +4,7 @@ local GAME_STATISTIC = require("main.modules.game_statistic")
 Wagon = require("main.classes.wagon")
 
 go.property("color", 0)
-go.property("speed", 3)
+go.property("speed", 0.5)
 
 local function vect_to_quat_90(vect)
 	return vmath.quat_rotation_z(math.atan2(vect.y, vect.x) + math.pi/2)

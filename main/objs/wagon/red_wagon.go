@@ -6,11 +6,6 @@ components {
     value: "1.0"
     type: PROPERTY_TYPE_NUMBER
   }
-  properties {
-    id: "speed"
-    value: "1.5"
-    type: PROPERTY_TYPE_NUMBER
-  }
 }
 embedded_components {
   id: "sprite"
