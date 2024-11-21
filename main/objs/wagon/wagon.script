@@ -6,13 +6,16 @@ Wagon = require("main.classes.wagon")
 go.property("color", 0)
 go.property("speed", 3)
 
+local function vect_to_quat_90(vect)
+	return vmath.quat_rotation_z(math.atan2(vect.y, vect.x) + math.pi/2)
+end
+
 function init(self)
 	self.bezie_t = 0
 	self.bezie_start_point = vmath.vector3()
 	self.bezie_end_point = vmath.vector3()
 	self.bezie_middle_point = vmath.vector3()
 	self.obj = Wagon(self.color)
-	self.start_vector = vmath.vector3(0, 1, 0)
 	self.no_colision = true
 end
 
@@ -26,14 +29,13 @@ function update(self, dt)
 		go.set_position(new_pos)
 	else
 		self.bezie_t = vmath.clamp(self.bezie_t + (dt * self.speed), 0, 1)
-		-- local new_pos = go.get_position() + direction * self.speed * dt
 		local new_pos =
 			math.pow(1 - self.bezie_t, 2) * self.bezie_start_point + 
 			2 * self.bezie_t * (1 - self.bezie_t) * self.bezie_middle_point +
 			math.pow(self.bezie_t, 2) * self.bezie_end_point
 		if new_pos == go.get_position() then return end
 		local direction = vmath.normalize(new_pos - go.get_world_position())
-		go.set_rotation(vmath.quat_from_to(self.start_vector, direction))
+		go.set_rotation(vect_to_quat_90(direction))
 		go.set_position(new_pos)
 	end
 end
@@ -53,7 +55,6 @@ function on_message(self, message_id, message, sender)
 		self.bezie_start_point = go.get_world_position()
 		self.bezie_end_point = message.destination_pos
 		self.bezie_middle_point = message.help_pos
-		self.obj:set_destination_pos(message.destination_pos)
 	end
 
 	if message_id == hash('delete_obj') then

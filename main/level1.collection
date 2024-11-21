@@ -1,4 +1,4 @@
-name: "level"
+name: "level1"
 instances {
   id: "camera"
   prototype: "/orthographic/camera.go"
@@ -611,7 +611,7 @@ embedded_instances {
   "  component: \"/main/spawner.script\"\n"
   "  properties {\n"
   "    id: \"spawn_interval\"\n"
-  "    value: \"2.3\"\n"
+  "    value: \"1.6\"\n"
   "    type: PROPERTY_TYPE_NUMBER\n"
   "  }\n"
   "}\n"

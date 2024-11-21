@@ -8,7 +8,7 @@ components {
   }
   properties {
     id: "speed"
-    value: "1.0"
+    value: "1.5"
     type: PROPERTY_TYPE_NUMBER
   }
 }
@@ -42,14 +42,15 @@ embedded_components {
   "  shapes {\n"
   "    shape_type: TYPE_BOX\n"
   "    position {\n"
+  "      y: -30.0\n"
   "    }\n"
   "    rotation {\n"
   "    }\n"
   "    index: 0\n"
   "    count: 3\n"
   "  }\n"
-  "  data: 37.5\n"
-  "  data: 62.5\n"
+  "  data: 5.0\n"
+  "  data: 5.0\n"
   "  data: 10.0\n"
   "}\n"
   ""

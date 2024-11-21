@@ -2,7 +2,7 @@ local GAME_STATE = require('main.modules.game_state')
 local GAME_STATISTIC = require("main.modules.game_statistic")
 
 function init(self)
-	msg.post("#levelproxy", "load")
+	msg.post("#level1proxy", "load")
 	msg.post(".", "acquire_input_focus")
 	GAME_STATISTIC.init()
 end
@@ -13,17 +13,17 @@ end
 
 function on_message(self, message_id, message, sender)
 	if message_id == hash("pause_level") then
-		msg.post("#levelproxy", "set_time_step", {factor = 0, mode = 1})
+		msg.post("#level1proxy", "set_time_step", {factor = 0, mode = 1})
 		GAME_STATE.set_is_paused(true)
 	end
 
 	if message_id == hash("resume_level") then
-		msg.post("#levelproxy", "set_time_step", {factor = 1, mode = 1})
+		msg.post("#level1proxy", "set_time_step", {factor = 1, mode = 1})
 		GAME_STATE.set_is_paused(false)
 	end
 
 	if message_id == hash("finish_level") then
-		msg.post("#levelproxy", "set_time_step", {factor = 0, mode = 1})
+		msg.post("#level1proxy", "set_time_step", {factor = 0, mode = 1})
 		GAME_STATE.set_is_finished(true)
 	end
 
@@ -33,18 +33,18 @@ function on_message(self, message_id, message, sender)
     end
 
 	if message_id == hash("proxy_unloaded") then
-        msg.post("#levelproxy", "load")
+        msg.post("#level1proxy", "load")
     end
 
 	if message_id == hash("restart_level") then
-		msg.post("#levelproxy", "disable")
-		msg.post("#levelproxy", "final")
-		msg.post("#levelproxy", "unload")
+		msg.post("#level1proxy", "disable")
+		msg.post("#level1proxy", "final")
+		msg.post("#level1proxy", "unload")
 	end
 
 	if message_id == hash("next_level") then
-		msg.post("#levelproxy", "disable")
-		msg.post("#levelproxy", "final")
-		msg.post("#levelproxy", "unload")
+		msg.post("#level1proxy", "disable")
+		msg.post("#level1proxy", "final")
+		msg.post("#level1proxy", "unload")
 	end
 end
