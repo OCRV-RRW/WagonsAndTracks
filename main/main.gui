@@ -113,6 +113,17 @@ nodes {
 }
 nodes {
   position {
+    y: -275.0
+  }
+  type: TYPE_BOX
+  texture: "gui/restart_button"
+  id: "restart_button_pause_window"
+  parent: "pause_window"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
     x: 600.0
     y: 1000.0
   }
@@ -440,6 +451,17 @@ nodes {
   type: TYPE_BOX
   id: "bottom_canvas"
   parent: "edges"
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: 600.0
+    y: 900.0
+  }
+  type: TYPE_BOX
+  texture: "gui/grid"
+  id: "grid"
+  inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
 }
 layers {

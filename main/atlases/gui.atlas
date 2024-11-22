@@ -25,4 +25,7 @@ images {
 images {
   image: "/resources/images/restart_button.png"
 }
+images {
+  image: "/resources/images/grid.png"
+}
 extrude_borders: 2

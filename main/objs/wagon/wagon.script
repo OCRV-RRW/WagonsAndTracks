@@ -25,7 +25,7 @@ end
 
 function update(self, dt)
 	if self.no_colision then
-		local new_pos = go.get_position() + vmath.vector3(0, self.speed * 100, 0) * dt
+		local new_pos = go.get_position() + vmath.vector3(0, self.speed * 500, 0) * dt
 		go.set_position(new_pos)
 	else
 		self.bezie_t = self.bezie_t + (dt * self.speed)
