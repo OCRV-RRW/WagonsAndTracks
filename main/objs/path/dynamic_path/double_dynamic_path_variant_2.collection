@@ -1,29 +1,18 @@
-name: "double_dunamic_path"
+name: "double_dynamic_path_variant_2"
 instances {
-  id: "double_dynamic_path"
-  prototype: "/main/objs/path/dynamic_path/double_dynamic_path.go"
+  id: "double_dynamic_path_variant_2"
+  prototype: "/main/objs/path/dynamic_path/double_dynamic_path_variant_2.go"
   children: "path_points"
-  component_properties {
-    id: "dynamic_path"
-    properties {
-      id: "type"
-      value: "1.0"
-      type: PROPERTY_TYPE_NUMBER
-    }
-  }
+}
+instances {
+  id: "help_point"
+  prototype: "/main/objs/path_point.go"
 }
 instances {
   id: "path_point"
   prototype: "/main/objs/path_point.go"
   position {
     y: -100.0
-  }
-}
-instances {
-  id: "path_point2"
-  prototype: "/main/objs/path_point.go"
-  position {
-    y: 100.0
   }
 }
 instances {
@@ -34,8 +23,11 @@ instances {
   }
 }
 instances {
-  id: "help_point"
+  id: "path_point2"
   prototype: "/main/objs/path_point.go"
+  position {
+    x: 100.0
+  }
 }
 scale_along_z: 0
 embedded_instances {

@@ -1,6 +1,11 @@
 components {
   id: "dynamic_path"
   component: "/main/objs/path/dynamic_path/dynamic_path.script"
+  properties {
+    id: "type"
+    value: "2.0"
+    type: PROPERTY_TYPE_NUMBER
+  }
 }
 embedded_components {
   id: "sprite"

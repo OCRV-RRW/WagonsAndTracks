@@ -4,6 +4,7 @@ local GAME_STATE = require('main.modules.game_state')
 Dynamic_Path = require("main.classes.dynamic_path")
 
 go.property('path_count', 2)
+go.property('type', 0)
 
 local function get_destination_pos(self, collision_object_id, wagon)
 	local destination_point_id = self.obj:get_destination_point(collision_object_id)
@@ -33,20 +34,27 @@ end
 local function change_state(self)
 	self.obj:toggle_state()
 	local new_state = self.obj:get_state()
-	if self.path_count == 2 then
+	if self.type == 1 then
 		if new_state == 1 then
 			sprite.play_flipbook('#sprite', 'double_dynamic_path_direction_cell')
 		elseif new_state == 2 then
 			sprite.play_flipbook('#sprite', 'double_dynamic_path_forward_cell')
 		end
 	end
-	if self.path_count == 3 then
+	if self.type == 2 then
 		if new_state == 1 then
 			sprite.play_flipbook("#sprite", "triple_dynamic_path_direction2_cell")
 		elseif new_state == 2 then
 			sprite.play_flipbook("#sprite", "triple_dynamic_path_forward_cell")
 		elseif new_state == 3 then
 			sprite.play_flipbook("#sprite", "triple_dynamic_path_direction_cell")
+		end
+	end
+	if self.type == 3 then
+		if new_state == 1 then
+			sprite.play_flipbook("#sprite", "double_dynamic_path_variant_2_direction2")
+		elseif new_state == 2 then
+			sprite.play_flipbook("#sprite", "double_dynamic_path_variant_2_direction")
 		end
 	end
 end

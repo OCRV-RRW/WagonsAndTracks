@@ -14,11 +14,20 @@ high_dpi = 1
 input_method = HiddenInputField
 
 [html5]
-scale_mode = fit
+scale_mode = stretch
 cssfile = /builtins/manifests/web/dark_theme.css
+splash_image = /resources/images/logo.png
+show_made_with_defold = 0
+show_fullscreen_button = 0
+show_console_banner = 0
 
 [project]
 title = WagonsAndTracks
 dependencies#0 = https://github.com/britzl/defold-orthographic/archive/master.zip
 dependencies#1 = https://github.com/Insality/druid/archive/refs/tags/1.0.zip
+
+[render]
+clear_color_red = 0.741
+clear_color_green = 0.764
+clear_color_blue = 0.7803
 

@@ -28,4 +28,7 @@ images {
 images {
   image: "/resources/images/grid.png"
 }
+images {
+  image: "/resources/images/pause_icon.png"
+}
 extrude_borders: 2

@@ -1,5 +1,6 @@
 local GAME_STATE = require('main.modules.game_state')
 local GAME_STATISTIC = require("main.modules.game_statistic")
+local GAME_SETTINGS = require('main.modules.game_settings')
 
 function init(self)
 	msg.post("#level"..tostring(GAME_STATE.LEVEL).."proxy", "load")
@@ -49,6 +50,10 @@ function on_message(self, message_id, message, sender)
 		msg.post("#level"..tostring(GAME_STATE.LEVEL).."proxy", "disable")
 		msg.post("#level"..tostring(GAME_STATE.LEVEL).."proxy", "final")
 		msg.post("#level"..tostring(GAME_STATE.LEVEL).."proxy", "unload")
-		GAME_STATE.set_level(GAME_STATE.LEVEL)
+		if GAME_STATE.LEVEL == GAME_SETTINGS.LEVELS then
+			GAME_STATE.set_level(1)
+		else
+			GAME_STATE.set_level(GAME_STATE.LEVEL + 1)
+		end
 	end
 end

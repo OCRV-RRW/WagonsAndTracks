@@ -72,7 +72,7 @@ function init(self)
 	end
 	
 	self.timer.on_timer_end:subscribe(self.timer_end_handler)
-	start_timer(self, GAME_SETTINGS.TIME)
+	start_timer(self, GAME_SETTINGS.TIME[GAME_STATE.LEVEL])
 end
 
 function final(self)

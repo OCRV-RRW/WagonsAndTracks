@@ -18,30 +18,65 @@ textures {
 nodes {
   position {
     x: 600.0
-    y: 1900.0
+    y: 2000.0
     z: 0.1
   }
   type: TYPE_BOX
   texture: "gui/top_background"
   id: "top"
+  yanchor: YANCHOR_TOP
+  pivot: PIVOT_N
+  adjust_mode: ADJUST_MODE_STRETCH
   layer: "l2"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
 }
 nodes {
   position {
-    x: -518.0
+    x: 495.0
+    y: -100.0
   }
   type: TYPE_BOX
-  texture: "gui/time_image"
-  id: "time_image"
+  texture: "gui/pause_button"
+  id: "pause"
+  xanchor: XANCHOR_LEFT
+  yanchor: YANCHOR_TOP
   parent: "top"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
 }
 nodes {
   position {
-    x: -300.0
+    x: -450.0
+    y: -100.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_BOX
+  id: "time_box"
+  xanchor: XANCHOR_LEFT
+  yanchor: YANCHOR_TOP
+  parent: "top"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+  visible: false
+}
+nodes {
+  position {
+    x: -50.0
+  }
+  type: TYPE_BOX
+  texture: "gui/time_image"
+  id: "time_image"
+  parent: "time_box"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: 150.0
   }
   size {
     x: 188.0
@@ -57,20 +92,39 @@ nodes {
   ""
   font: "rubick_light"
   id: "time"
-  parent: "top"
+  parent: "time_box"
   inherit_alpha: true
 }
 nodes {
+  position {
+    y: -100.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
   type: TYPE_BOX
-  texture: "gui/train_count_image"
-  id: "train_count_image"
+  id: "train_count_box"
+  xanchor: XANCHOR_LEFT
+  yanchor: YANCHOR_TOP
   parent: "top"
   inherit_alpha: true
+  alpha: 0.0
   size_mode: SIZE_MODE_AUTO
 }
 nodes {
   position {
-    x: 130.0
+    x: -50.0
+  }
+  type: TYPE_BOX
+  texture: "gui/train_count_image"
+  id: "train_count_image"
+  parent: "train_count_box"
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: 100.0
   }
   size {
     x: 200.0
@@ -84,31 +138,23 @@ nodes {
   type: TYPE_TEXT
   font: "rubick_light"
   id: "train_count"
-  parent: "top"
-  inherit_alpha: true
-}
-nodes {
-  position {
-    x: 495.0
-  }
-  type: TYPE_BOX
-  texture: "gui/pause_button"
-  id: "pause"
-  parent: "top"
-  inherit_alpha: true
-  size_mode: SIZE_MODE_AUTO
+  parent: "train_count_box"
 }
 nodes {
   position {
     x: 600.0
     y: 1000.0
   }
+  size {
+    x: 1200.0
+    y: 2000.0
+  }
   type: TYPE_BOX
   texture: "gui/pause_background"
   id: "pause_window"
+  adjust_mode: ADJUST_MODE_STRETCH
   layer: "l1"
   inherit_alpha: true
-  size_mode: SIZE_MODE_AUTO
   enabled: false
 }
 nodes {
@@ -123,6 +169,35 @@ nodes {
   size_mode: SIZE_MODE_AUTO
 }
 nodes {
+  type: TYPE_BOX
+  texture: "gui/pause_icon"
+  id: "pause_icon"
+  parent: "pause_window"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: 3.0
+    y: -110.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  color {
+    x: 0.173
+    y: 0.243
+    z: 0.314
+  }
+  type: TYPE_TEXT
+  text: "\320\277\320\260\321\203\320\267\320\260"
+  font: "rubick_light"
+  id: "pause_text"
+  parent: "pause_window"
+  inherit_alpha: true
+}
+nodes {
   position {
     x: 600.0
     y: 1000.0
@@ -133,6 +208,7 @@ nodes {
   }
   type: TYPE_BOX
   id: "statistic_window"
+  adjust_mode: ADJUST_MODE_STRETCH
   layer: "l3"
   inherit_alpha: true
   alpha: 0.0
@@ -150,8 +226,10 @@ nodes {
   }
   type: TYPE_BOX
   id: "background"
+  adjust_mode: ADJUST_MODE_STRETCH
   parent: "statistic_window"
   alpha: 0.72
+  size_mode: SIZE_MODE_AUTO
 }
 nodes {
   position {
@@ -371,96 +449,31 @@ nodes {
 nodes {
   position {
     x: 600.0
-    y: 1000.0
-  }
-  size {
-    x: 200.0
-    y: 100.0
-  }
-  type: TYPE_BOX
-  id: "edges"
-  inherit_alpha: true
-  alpha: 0.0
-  size_mode: SIZE_MODE_AUTO
-}
-nodes {
-  position {
-    x: -1200.0
-  }
-  size {
-    x: 1200.0
-    y: 2000.0
-  }
-  color {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-  }
-  type: TYPE_BOX
-  id: "left_canvas"
-  parent: "edges"
-}
-nodes {
-  position {
-    x: 1200.0
-  }
-  size {
-    x: 1200.0
-    y: 2000.0
-  }
-  color {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-  }
-  type: TYPE_BOX
-  id: "right_canvas"
-  parent: "edges"
-}
-nodes {
-  position {
-    y: 1500.0
-  }
-  size {
-    x: 1200.0
-    y: 1000.0
-  }
-  color {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-  }
-  type: TYPE_BOX
-  id: "top_canvas"
-  parent: "edges"
-  size_mode: SIZE_MODE_AUTO
-}
-nodes {
-  position {
-    y: -1500.0
-  }
-  size {
-    x: 1200.0
-    y: 1000.0
-  }
-  color {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-  }
-  type: TYPE_BOX
-  id: "bottom_canvas"
-  parent: "edges"
-  size_mode: SIZE_MODE_AUTO
-}
-nodes {
-  position {
-    x: 600.0
     y: 900.0
   }
   type: TYPE_BOX
   texture: "gui/grid"
   id: "grid"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: 608.0
+    y: -450.0
+    z: -1.0
+  }
+  size {
+    x: 1200.0
+    y: 900.0
+  }
+  color {
+    x: 0.741
+    y: 0.765
+    z: 0.78
+  }
+  type: TYPE_BOX
+  id: "box"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
 }

@@ -28,4 +28,10 @@ images {
 images {
   image: "/resources/images/triple_dynamic_path_direction2_cell.png"
 }
+images {
+  image: "/resources/images/double_dynamic_path_variant_2_direction.png"
+}
+images {
+  image: "/resources/images/double_dynamic_path_variant_2_direction2.png"
+}
 extrude_borders: 2

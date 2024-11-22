@@ -1,16 +1,16 @@
 components {
-  id: "dynamic_path1"
+  id: "dynamic_path"
   component: "/main/objs/path/dynamic_path/dynamic_path.script"
   properties {
     id: "type"
-    value: "2.0"
+    value: "3.0"
     type: PROPERTY_TYPE_NUMBER
   }
 }
 embedded_components {
   id: "sprite"
   type: "sprite"
-  data: "default_animation: \"triple_dynamic_path_forward_cell\"\n"
+  data: "default_animation: \"double_dynamic_path_variant_2_direction\"\n"
   "material: \"/builtins/materials/sprite.material\"\n"
   "size {\n"
   "  x: 200.0\n"
