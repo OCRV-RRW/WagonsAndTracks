@@ -14,7 +14,7 @@ function Path:get_state()
     return self.state
 end
 
-function Path:get_destination_point(point) 
+function Path:get_destination_point(point)
     if point == self.point1 then
         return self.point2
     elseif point == self.point2 then
